@@ -1,0 +1,496 @@
+/* styles.css */
+
+/* Colores personalizados */
+:root {
+  --color-primary: #c93384;
+  --color-secondary: #ffc1ff;
+  --color-tertiary: #ff97d9;
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* STYLO PARA EL BACKGROUND */
+
+/* FIN DE STYLO PARA EL BACKGROUND */
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos del encabezado */
+header {
+  background-color: var(--color-primary);
+  padding: 10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: var(--color-secondary);
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 10px;
+}
+
+.nav-link {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  background-color: var(--color-primary);
+}
+
+/* Estilos de las secciones */
+section {
+  padding: 50px 0;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilos de los mini cards de Section Servicios y productos "Style domino"*/
+
+#servicios .stretched-link {
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+#servicios .card-body{
+  color: black; /* Color de texto */
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 10px;
+  padding-bottom: 0%;
+}
+
+#servicios .card:hover {
+  background-color: var(--color-tertiary); /* Color de fondo */
+}
+
+#servicios .card-title{
+  color: black; /* Color de texto */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-bottom: 10px;
+  padding-top: 20px; /* Añade espacio en la parte superior del título */
+}
+
+/* Estilos de los mini cards de Section Servicios y productos "Style domino"*/
+
+#servicios .mini-card {
+  width: 190px;
+  height: 254px;
+  background: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: #333;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border-radius: 40px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.7s ease-in-out;
+  overflow: hidden;
+  border: 2px solid black; /* Borde más grueso */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Sombra alrededor de la card para darle relieve */
+}
+
+/* Estilos para las mini-cards en pantallas pequeñas (menos de 600px de ancho) */
+@media (max-width: 600px) {
+  #servicios .mini-card {
+    width: 100%; /* Las mini-cards ocuparán todo el ancho de la pantalla */
+    height: auto; /* La altura se ajustará automáticamente según el contenido */
+    margin-bottom: 20px; /* Añade un margen en la parte inferior para separar las mini-cards */
+  }
+}
+
+#servicios .mini-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más grande al pasar el mouse */
+  transform: translateY(-10px); /* Mueve la card hacia arriba */
+}
+
+#servicios .mini-card::before {
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background-color: var(--color-tertiary);
+  bottom: 0;
+  right: 0;
+  transform: translatey(70px);
+  border-radius: 100%;
+  transition: all 0.7s ease-in-out;
+}
+
+#servicios .mini-card::after {
+  top: 70%; /* Posiciona el pseudo-elemento ::after más abajo en la card */
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-tertiary);
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  z-index: 1;
+}
+
+#servicios .mini-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más grande al pasar el mouse */
+  transform: translateY(-10px); /* Mueve la card hacia arriba */
+  color: #f3f3f3;
+}
+
+#servicios .mini-card:hover::before {
+  transform: scale(7) translate(-20px);
+}
+
+#servicios .card-img-top, #servicios .card-title {
+  position: relative;
+  z-index: 2; /* Sitúa la imagen y el título por encima de la capa de color */
+}
+
+/* Estilos del carousel */
+.carousel {
+  margin-bottom: 50px;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos adicionales */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-tertiary);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Esta clase eliminará cualquier margen superior del elemento al que se aplique */
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+/* Estilos para el carrousel de servicios y productos */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(128, 128, 128, 0.5); /* Gris transparente */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  width: 5%;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+/* Animacion Boton */
+/* Estilo para el botón */
+.btn-primary {
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Estilo para el botón al pasar el mouse por encima o al enfocarlo */
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--color-secondary); /* Nuevo color de fondo */
+  border-color: var(--color-tertiary); /* Nuevo color de borde */
+}
+
+/* Estilos de las tarjetas */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Oculta cualquier contenido que se salga de los bordes del card */
+}
+
+.card:hover {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la animación al hacer clic en la tarjeta (solo en dispositivos móviles) */
+@media (hover: none) {
+  .card:active {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.card-header {
+  background-color: var(--color-tertiary);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para los enlaces en los títulos de las tarjetas */
+.card-title {
+  color: black; /* Color de texto */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.card-body .card-title a {
+  color: #0c0c0c; /* Color de texto */
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+/* Estilo para los enlaces en los títulos de las tarjetas al pasar el mouse por encima */
+.card-body .card-title a:hover {
+  color: #209d8a; /* Color de texto al pasar el mouse por encima (naranja suave) */
+}
+
+.card-body p {
+  font-size: 12px;
+}
+
+/* Estilo para la imagen del card */
+.card-img-top {
+  transition: transform 0.3s ease-in-out; /* Agrega una transición suave al transformar la imagen */
+  transform-origin: center; /* La transformación se origina desde el centro de la imagen */
+}
+
+/* Estilo para la imagen del card cuando el usuario pasa el mouse sobre ella */
+.card-img-top:hover {
+  transform: scale(1.05); /* Aumenta el tamaño de la imagen al 105% */
+}
+
+/* Estilo para el botón de la tarjeta del carousel*/
+.comic-button {
+  display: inline-block;
+  padding: 10px 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: var(--color-tertiary);
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.comic-button:hover {
+  background-color: #fff;
+  color: var(--color-tertiary);
+  border: 2px solid var(--color-tertiary);
+  box-shadow: 5px 5px 0px var(--color-tertiary);
+}
+
+.comic-button:active {
+  background-color: var(--color-secondary);
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+/* Estilos para la sección de contacto */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-family: inherit;
+  gap: 10px;
+  padding-inline: 2em;
+  padding-bottom: 0.4em;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+}
+
+.form-heading {
+  text-align: center;
+  margin: 2em;
+  color: var(--color-secondary);
+  font-size: 1.2em;
+  background-color: transparent;
+  align-self: center;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 10px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: var(--color-primary);
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--color-secondary);
+  padding-inline: 1em;
+}
+
+/* Estilos para el texto del placeholder */
+.input-field::placeholder {
+  color: var(--color-secondary); /* Cambia este valor al color que desees */
+}
+
+.sendMessage-btn {
+  cursor: pointer;
+  margin-bottom: 3em;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+  font-weight: bold;
+  outline: 1px solid var(--color-secondary);
+  transition: all ease-in-out 0.3s;
+}
+
+.sendMessage-btn:hover {
+  transition: all ease-in-out 0.3s;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  cursor: pointer;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.form-card1 {
+  background-image: linear-gradient(163deg, var(--color-secondary) 0%, var(--color-secondary) 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.form-card1:hover {
+  box-shadow: 0px 0px 30px 1px rgba(100, 255, 218, 0.3);
+}
+
+.form-card2 {
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.form-card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+
+/* Estilos del pie de página */
+footer {
+  background-color: var(--color-primary);
+  padding: 20px;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.social-icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: var(--color-secondary);
+}
+
+.social-icons li {
+  margin: 0 10px;
+}
+
+.social-icons a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* Estilos para el enlace del desarrollador en el pie de página */
+.developer-link {
+  color: inherit; /* El color del enlace será el mismo que el del texto circundante */
+  text-decoration: none; /* Elimina el subrayado automático de los enlaces */
+  transition: color 0.3s ease, background-size 0.3s ease; /* Transición suave para los cambios de color y tamaño de fondo */
+  background-image: linear-gradient(currentColor, currentColor); /* Crea una línea con el mismo color que el texto */
+  background-position: 0% 100%; /* Posiciona la línea en la parte inferior del texto */
+  background-repeat: no-repeat; /* Evita que la línea se repita */
+  background-size: 0% 2px; /* Inicialmente, la línea tiene un ancho de 0% (no visible) y una altura de 2px */
+}
+
+.developer-link:hover {
+  color: var(--color-tertiary); /* Cambia el color del enlace al pasar el mouse */
+  background-size: 100% 2px; /* Al pasar el mouse, la línea se expande para tener el mismo ancho que el texto */
+}
