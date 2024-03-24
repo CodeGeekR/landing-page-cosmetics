@@ -39,8 +39,8 @@ El proyecto tiene la siguiente estructura de archivos:
 
 ## Vista Previa
 
-- <a href="https://www.example.com" target="_blank">Página web del proyecto</a>
+- [Página web del proyecto](https://codegeekr.github.io/landing-page-cosmetics/)
 
 ## Créditos
 
-Este proyecto fue desarrollado por [<a href="https://www.samuradidev.engineer" target="_blank">samuraidev</a>].
+Este proyecto fue desarrollado por [samuraidev](https://www.samuraidev.engineer)
