@@ -420,14 +420,15 @@ section {
 }
 
 /* Estilo para la imagen del card */
-.card-img-top {
-  transition: transform 0.3s ease-in-out; /* Agrega una transición suave al transformar la imagen */
-  transform-origin: center; /* La transformación se origina desde el centro de la imagen */
+.card-img-carousel {
+  width: 100%;
+  transform-origin: center;
+  transition: transform 0.5s ease-in-out;
 }
 
 /* Estilo para la imagen del card cuando el usuario pasa el mouse sobre ella */
-.card-img-top:hover {
-  transform: scale(1.05); /* Aumenta el tamaño de la imagen al 105% */
+.card-img-carousel:hover {
+  transform: scale(1.05);
 }
 
 /* Estilo para el botón de la tarjeta del carousel*/
