@@ -29,12 +29,25 @@ body {
 header {
   background-color: var(--color-primary);
   padding: 10px;
+  height: 90px; /* Ajusta esto al tamaño que prefieras */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  header {
+    display:block;
+    padding: 10px;
+    height: 110px;
+  }
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .navbar-brand {
@@ -42,11 +55,64 @@ header {
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-left: 160px;
+}
+
+@media (max-width: 992px) {
+  .navbar-brand {
+    margin-left: 20px;
+    margin-top: -30px;
+  }
+}
+
+.navbar-brand img {
+  max-height: 100%;
+  object-fit: contain;
+  margin: 0;
 }
 
 .navbar-nav {
   list-style: none;
   display: flex;
+}
+
+.navbar-nav .nav-link {
+  color: var(--color-secondary) !important; /* Cambia esto al color que prefieras */
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--color-tertiary) !important; /* Cambia esto al color que prefieras */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+  color: var(--color-secondary) !important; /* Cambia esto al color que prefieras */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover {
+  color: var(--color-primary) !important; /* Cambia esto al color que prefieras */
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:active {
+  background-color: #ffffff !important; /* Cambia esto al color que prefieras */
+}
+
+.navbar-toggler {
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 992px) {
+  .navbar-toggler {
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+}
+
+.navbar-toggler-collapse {
+  background-color: var(--color-primary);
 }
 
 .nav-item {
@@ -494,3 +560,66 @@ footer {
   color: var(--color-tertiary); /* Cambia el color del enlace al pasar el mouse */
   background-size: 100% 2px; /* Al pasar el mouse, la línea se expande para tener el mismo ancho que el texto */
 }
+
+/* Estilos para nav SELECT BOTON SERVICIOS Y PRODUCTOS */
+
+/* #select-button {
+  background-color: var(--color-primary);
+}
+
+#select-button .wrapper {
+  --font-color-dark: #fefefe;
+  --font-color-light: #111;
+  --bg-color: #111;
+  --main-color: #fefefe;
+  position: relative;
+  width: 300px;
+  height: 45px;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 34px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 4px 4px var(--color-secondary);
+}
+
+#select-button .option {
+  width: 146px;
+  height: 37px;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+#select-button .input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+#select-button .btn {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#select-button .span {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+#select-button .input:checked + .btn {
+  background-color: var(--color-secondary);
+}
+
+#select-button .input:checked + .btn .span {
+  color: var(--color-primary);
+} */
