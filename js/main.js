@@ -1,6 +1,3 @@
-// main.js
-
-
 //*
 // Codigo para la funcionalidad del carrousel en dispositivo movil 
 
@@ -82,7 +79,7 @@ window.dispatchEvent(new Event('resize'));
  */
 
 // Selecciona todos los elementos que necesitan la animación
-const elementos = document.querySelectorAll('img, button, p, h2, h3, h4, h5, h6, li, input');
+const elementos = document.querySelectorAll('img, button, p, h2, h3, h4, h5, h6, li, input, textarea');
 
 // Define la animación para el scroll hacia abajo
 const keyframesAbajo = [
@@ -122,6 +119,27 @@ elementos.forEach(elemento => {
   observer.observe(elemento);
 });
 
+//
+//*
+//* Codigo para la funcionalidad de cerrar menu hamburguesa en dispositivos moviles cuando el usuario hace click en cualquier hipervinculo dentro del menu
+document.addEventListener('DOMContentLoaded', function () {
+  var dropdownItems = document.querySelectorAll('.navbar-nav .dropdown-item');
+  var contactLink = document.querySelector('.navbar-nav .contact-link');
+
+  var linksToCloseMenu = [...dropdownItems];
+  if (contactLink) {
+    linksToCloseMenu.push(contactLink);
+  }
+
+  linksToCloseMenu.forEach(function (link) {
+    link.addEventListener('click', function () {
+      var navbarCollapse = document.querySelector('.navbar-collapse.show');
+      if (navbarCollapse) {
+        navbarCollapse.classList.remove('show');
+      }
+    });
+  });
+});
 
 
 /*
