@@ -366,14 +366,10 @@ section {
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease-in-out;
   overflow: hidden;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
 }
 
 .card:hover {
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 10px 20px var(--color-secondary);
 }
 
 /* Estilo para la animación al hacer clic en la tarjeta (solo en dispositivos móviles) */
@@ -408,13 +404,15 @@ section {
 }
 
 .card-body .card-title a {
-  color: #0c0c0c; /* Color de texto */
+  color: var(--color-primary); /* Color de texto */
   text-decoration: none; /* Elimina el subrayado */
+  font-family: var(--font-primary);
+  font-size: medium;
 }
 
 /* Estilo para los enlaces en los títulos de las tarjetas al pasar el mouse por encima */
 .card-body .card-title a:hover {
-  color: #209d8a; /* Color de texto al pasar el mouse por encima (naranja suave) */
+  color: var(--color-tertiary); /* Color de texto al pasar el mouse por encima (naranja suave) */
 }
 
 .card-body p {
