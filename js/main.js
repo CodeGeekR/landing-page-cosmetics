@@ -139,6 +139,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Cerrar el menú hamburguesa cuando se hace clic fuera del menú
+  document.body.addEventListener('click', function (event) {
+    var navbarCollapse = document.querySelector('.navbar-collapse.show');
+    if (navbarCollapse && !navbarCollapse.contains(event.target)) {
+      // Verificar si la pantalla es de smartphone o tablet
+      if (window.matchMedia('(max-width: 992px)').matches) {
+        navbarCollapse.classList.remove('show');
+      }
+    }
+  });
 });
 
 

@@ -5,6 +5,8 @@
   --color-primary: #c93384;
   --color-secondary: #ffc1ff;
   --color-tertiary: #ff97d9;
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Roboto', sans-serif;
 }
 
 /* Estilos generales */
@@ -41,6 +43,12 @@ header {
     padding: 10px;
     height: 110px;
   }
+}
+
+h2 {
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .navbar {
@@ -205,8 +213,8 @@ section {
   position: relative;
   transition: all 0.7s ease-in-out;
   overflow: hidden;
-  border: 2px solid black; /* Borde más grueso */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Sombra alrededor de la card para darle relieve */
+  border: 2px solid var(--color-primary); /* Borde más grueso */
+  box-shadow: 0 0 10px var(--color-primary); /* Sombra alrededor de la card para darle relieve */
 }
 
 /* Estilos para las mini-cards en pantallas pequeñas (menos de 600px de ancho) */
@@ -219,7 +227,7 @@ section {
 }
 
 #servicios .mini-card:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más grande al pasar el mouse */
+  box-shadow: 0 5px 15px var(--color-primary); /* Sombra más grande al pasar el mouse */
   transform: translateY(-10px); /* Mueve la card hacia arriba */
 }
 
@@ -250,7 +258,7 @@ section {
 }
 
 #servicios .mini-card:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más grande al pasar el mouse */
+  box-shadow: 0 5px 15px var(--color-primary); /* Sombra más grande al pasar el mouse */
   transform: translateY(-10px); /* Mueve la card hacia arriba */
   color: #f3f3f3;
 }
