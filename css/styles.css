@@ -465,6 +465,14 @@ section {
   border-radius: 0.4em;
 }
 
+/* Estilo para el botón dentro del card en pantallas pequeñas */
+@media (max-width: 640px) { 
+  .button-wp {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .button-wp button p {
   position: absolute;
   top: 0.2em;
