@@ -1,10 +1,8 @@
-//*
-// Codigo para la funcionalidad del carrousel en dispositivo movil 
-
-window.addEventListener('resize', function () {
+// Función para ajustar el carrusel según el tamaño de la ventana
+function ajustarCarrusel(selector) {
   var width = window.innerWidth;
-  var carouselInner = document.querySelector('.carousel-inner.service');
-  var cards = Array.from(document.querySelectorAll('.card.service'));
+  var carouselInner = document.querySelector(selector + ' .carousel-inner.service');
+  var cards = Array.from(document.querySelectorAll(selector + ' .card.service'));
 
   carouselInner.innerHTML = '';
 
@@ -68,10 +66,91 @@ window.addEventListener('resize', function () {
       carouselInner.appendChild(carouselItem);
     }
   }
+}
+
+// Ejecuta la función de ajuste para cada carrusel al cargar la página y al redimensionar la ventana
+window.addEventListener('resize', function () {
+  ajustarCarrusel('#carouselServiceMaquillaje');
+  // Añade aquí los otros carruseles
 });
 
-// Ejecuta la función de redimensionamiento al cargar la página
 window.dispatchEvent(new Event('resize'));
+
+
+// //*
+// // Codigo para la funcionalidad del carrousel en dispositivo movil 
+
+// window.addEventListener('resize', function () {
+//   var width = window.innerWidth;
+//   var carouselInner = document.querySelector('.carousel-inner.service');
+//   var cards = Array.from(document.querySelectorAll('.card.service'));
+
+//   carouselInner.innerHTML = '';
+
+//   if (width < 768) {
+//     // Para dispositivos móviles, agrupa las tarjetas de dos en dos
+//     for (var i = 0; i < cards.length; i += 2) {
+//       var carouselItem = document.createElement('div');
+//       carouselItem.className = 'carousel-item';
+//       if (i === 0) carouselItem.className += ' active';
+
+//       var container = document.createElement('div');
+//       container.className = 'container';
+
+//       var row = document.createElement('div');
+//       row.className = 'row';
+
+//       var col1 = document.createElement('div');
+//       col1.className = 'col-6 col-md-4';
+//       col1.appendChild(cards[i]);
+
+//       var col2 = document.createElement('div');
+//       col2.className = 'col-6 col-md-4';
+//       if (cards[i + 1]) col2.appendChild(cards[i + 1]);
+
+//       row.appendChild(col1);
+//       row.appendChild(col2);
+//       container.appendChild(row);
+//       carouselItem.appendChild(container);
+//       carouselInner.appendChild(carouselItem);
+//     }
+//   } else {
+//     // Para pantallas grandes, agrupa las tarjetas de tres en tres
+//     for (var i = 0; i < cards.length; i += 3) {
+//       var carouselItem = document.createElement('div');
+//       carouselItem.className = 'carousel-item';
+//       if (i === 0) carouselItem.className += ' active';
+
+//       var container = document.createElement('div');
+//       container.className = 'container';
+
+//       var row = document.createElement('div');
+//       row.className = 'row';
+
+//       var col1 = document.createElement('div');
+//       col1.className = 'col-12 col-md-4';
+//       col1.appendChild(cards[i]);
+
+//       var col2 = document.createElement('div');
+//       col2.className = 'col-12 col-md-4';
+//       if (cards[i + 1]) col2.appendChild(cards[i + 1]);
+
+//       var col3 = document.createElement('div');
+//       col3.className = 'col-12 col-md-4';
+//       if (cards[i + 2]) col3.appendChild(cards[i + 2]);
+
+//       row.appendChild(col1);
+//       row.appendChild(col2);
+//       row.appendChild(col3);
+//       container.appendChild(row);
+//       carouselItem.appendChild(container);
+//       carouselInner.appendChild(carouselItem);
+//     }
+//   }
+// });
+
+// // Ejecuta la función de redimensionamiento al cargar la página
+// window.dispatchEvent(new Event('resize'));
 
 
 /**
