@@ -154,77 +154,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 /*
-/*
-/*
-/**
- * 
- * @param {otras funciones por verificar} target 
- */
+/* Logica para el button-wp dentro de los cards de carousel para que direcione al whatsapp del vendedor
+/* obteniendo el titulo del producto, tipo de servicio o producto. 
+/**/
 
-// Función para manejar el desplazamiento suave al hacer clic en los enlaces de la barra de navegación
-function smoothScroll(target) {
-  document.querySelector(target).scrollIntoView({
-    behavior: 'smooth'
-  });
-}
+// Selecciona todos los botones con la clase 'button-wp'
+const buttons = document.querySelectorAll('.button-wp button');
 
-// Evento para manejar el clic en los enlaces de la barra de navegación
-document.querySelectorAll('.navbar-nav a').forEach(link => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    const target = event.target.getAttribute('href');
-    smoothScroll(target);
-  });
-});
+// Itera sobre cada botón
+buttons.forEach(button => {
+  // Agrega un event listener para el evento 'click'
+  button.addEventListener('click', function (e) {
+    e.preventDefault();
 
-// Función para mostrar animaciones al desplazarse
-function animateOnScroll() {
-  const elements = document.querySelectorAll('.animate-on-scroll');
-  elements.forEach(element => {
-    const elementPosition = element.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    if (elementPosition < windowHeight) {
-      element.classList.add('animate');
+    // Encuentra el elemento padre más cercano con la clase 'card'
+    const card = this.closest('.card');
+
+    // Encuentra el título del servicio y el nombre del producto dentro del elemento padre
+    let serviceTitle = document.querySelector('.title-service').textContent;
+    const productName = card.querySelector('h5 a').textContent;
+
+    // Verifica si el título del servicio termina con 's' o 'S'
+    if (/s$/i.test(serviceTitle)) {
+      // Si es así, elimina la última letra
+      serviceTitle = serviceTitle.slice(0, -1);
     }
-  });
-}
 
-// Evento para manejar el desplazamiento de la página
-window.addEventListener('scroll', animateOnScroll);
+    // Crea el mensaje personalizado
+    const message = `Hola, estoy interesad@ en el ${serviceTitle}: ${productName}. ¿Me podrías brindar más información?`;
 
-// Función para manejar el clic en los iconos de las categorías de servicios
-function handleCategoryClick(category) {
-  const target = `#${category}`;
-  smoothScroll(target);
-}
+    // Codifica el mensaje para usarlo en una URL
+    const encodedMessage = encodeURIComponent(message);
 
-// Evento para manejar el clic en los iconos de las categorías de servicios
-document.querySelectorAll('.category-icon').forEach(icon => {
-  icon.addEventListener('click', (event) => {
-    const category = event.target.getAttribute('data-category');
-    handleCategoryClick(category);
-  });
-});
-
-// Función para inicializar el carrusel de productos y servicios
-function initCarousel() {
-  const carousel = new bootstrap.Carousel(document.querySelector('.carousel'), {
-    interval: 5000
-  });
-}
-
-// Evento para inicializar el carrusel de productos y servicios cuando la página se carga completamente
-window.addEventListener('load', initCarousel);
-
-// Función para manejar el clic en los íconos de las redes sociales
-function handleSocialMediaClick(socialMedia) {
-  // Lógica para redirigir al usuario a la página de la red social correspondiente
-}
-
-// Evento para manejar el clic en los íconos de las redes sociales
-document.querySelectorAll('.social-media-icon').forEach(icon => {
-  icon.addEventListener('click', (event) => {
-    const socialMedia = event.target.getAttribute('data-social-media');
-    handleSocialMediaClick(socialMedia);
+    // Abre WhatsApp con el mensaje personalizado
+    window.open(`https://wa.me/+573507520076?text=${encodedMessage}`);
   });
 });
