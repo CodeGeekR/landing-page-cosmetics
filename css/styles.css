@@ -466,16 +466,41 @@ section {
 }
 
 /* Estilo para el botón dentro del card en pantallas pequeñas */
-@media (max-width: 640px) { 
+@media (min-width: 320px) and (max-width: 389px) { 
   .button-wp {
     display: flex;
     justify-content: center;
   }
+
+  .button-wp button p {
+    padding-right: 10% !important;
+    left: 0.70em !important;
+}
+
   .button-wp button:hover p {
     font-size: 12px;
     padding-top: 5%;
   }
 }
+
+/* media queries para pantalla de iPhone 14 Max Pro, iPhone XR y piexel 7*/
+@media (min-width: 390px) and (max-width: 960px) {
+  .button-wp {
+    display: flex;
+    justify-content: center;
+  }
+
+  .button-wp button p {
+    padding-right: 10% !important;
+    left: 1.3em !important;
+}
+
+  .button-wp button:hover p {
+    font-size: 13px;
+    padding-top: 3%;
+  }
+}
+
 
 .button-wp button p {
   position: absolute;
@@ -484,7 +509,7 @@ section {
   margin: 0;
   padding: 0;
   transition: .5s;
-  color: #c93384;
+  color: var(--color-primary);
   font-weight: bold;
   font-size: 16px;
 }
