@@ -1,84 +1,111 @@
-// Función para ajustar el carrusel según el tamaño de la ventana
-function ajustarCarrusel(selector) {
-  var width = window.innerWidth;
-  var carouselInner = document.querySelector(selector + ' .carousel-inner.service');
-  var cards = Array.from(document.querySelectorAll(selector + ' .card.service'));
 
-  carouselInner.innerHTML = '';
 
-  if (width < 768) {
-    // Para dispositivos móviles, agrupa las tarjetas de dos en dos
-    for (var i = 0; i < cards.length; i += 2) {
-      var carouselItem = document.createElement('div');
-      carouselItem.className = 'carousel-item';
-      if (i === 0) carouselItem.className += ' active';
+//*
+//* Código para la funcionalidad del carrusel en dispositivo móvil 
+//* */
 
-      var container = document.createElement('div');
-      container.className = 'container';
+// Primero, seleccionamos todos los carruseles en la página. 
+// Usamos 'Array.from' para convertir el NodeList devuelto por 'querySelectorAll' en un array.
+var carousels = Array.from(document.querySelectorAll('.carousel-inner.service'));
 
-      var row = document.createElement('div');
-      row.className = 'row';
+// Luego, iteramos sobre cada carrusel con 'forEach'.
+carousels.forEach(function(carouselInner) {
 
-      var col1 = document.createElement('div');
-      col1.className = 'col-6 col-md-4';
-      col1.appendChild(cards[i]);
+  // Agregamos un 'event listener' para el evento 'resize' del objeto 'window'.
+  // Esto nos permite ejecutar código cada vez que se cambia el tamaño de la ventana.
+  window.addEventListener('resize', function () {
 
-      var col2 = document.createElement('div');
-      col2.className = 'col-6 col-md-4';
-      if (cards[i + 1]) col2.appendChild(cards[i + 1]);
+    // Obtenemos el ancho de la ventana con 'window.innerWidth'.
+    var width = window.innerWidth;
 
-      row.appendChild(col1);
-      row.appendChild(col2);
-      container.appendChild(row);
-      carouselItem.appendChild(container);
-      carouselInner.appendChild(carouselItem);
+    // Seleccionamos todas las tarjetas dentro del carrusel actual.
+    var cards = Array.from(carouselInner.querySelectorAll('.card.service'));
+
+    // Limpiamos el contenido interno del carrusel.
+    carouselInner.innerHTML = '';
+
+    // Si el ancho de la ventana es menor a 768px, agrupamos las tarjetas de dos en dos.
+    if (width < 768) {
+
+      // Iteramos sobre las tarjetas con un bucle 'for', incrementando 'i' en 2 cada vez.
+      for (var i = 0; i < cards.length; i += 2) {
+
+        // Creamos un nuevo elemento 'div' para el ítem del carrusel.
+        var carouselItem = document.createElement('div');
+        carouselItem.className = 'carousel-item';
+
+        // Si 'i' es 0, agregamos la clase 'active' al ítem del carrusel.
+        if (i === 0) carouselItem.className += ' active';
+
+        // Creamos los elementos 'div' para el contenedor, la fila y las columnas.
+        var container = document.createElement('div');
+        container.className = 'container';
+
+        var row = document.createElement('div');
+        row.className = 'row';
+
+        var col1 = document.createElement('div');
+        col1.className = 'col-6 col-md-4';
+        col1.appendChild(cards[i]);
+
+        var col2 = document.createElement('div');
+        col2.className = 'col-6 col-md-4';
+
+        // Si existe una tarjeta siguiente, la agregamos a la segunda columna.
+        if (cards[i + 1]) col2.appendChild(cards[i + 1]);
+
+        // Agregamos las columnas a la fila, la fila al contenedor y el contenedor al ítem del carrusel.
+        row.appendChild(col1);
+        row.appendChild(col2);
+        container.appendChild(row);
+        carouselItem.appendChild(container);
+
+        // Finalmente, agregamos el ítem del carrusel al carrusel.
+        carouselInner.appendChild(carouselItem);
+      }
+    } else {
+      // Si el ancho de la ventana es 768px o más, agrupamos las tarjetas de tres en tres.
+      // El código aquí es similar al anterior, pero con una columna adicional.
+      for (var i = 0; i < cards.length; i += 3) {
+        var carouselItem = document.createElement('div');
+        carouselItem.className = 'carousel-item';
+        if (i === 0) carouselItem.className += ' active';
+
+        var container = document.createElement('div');
+        container.className = 'container';
+
+        var row = document.createElement('div');
+        row.className = 'row';
+
+        var col1 = document.createElement('div');
+        col1.className = 'col-12 col-md-4';
+        col1.appendChild(cards[i]);
+
+        var col2 = document.createElement('div');
+        col2.className = 'col-12 col-md-4';
+        if (cards[i + 1]) col2.appendChild(cards[i + 1]);
+
+        var col3 = document.createElement('div');
+        col3.className = 'col-12 col-md-4';
+        if (cards[i + 2]) col3.appendChild(cards[i + 2]);
+
+        row.appendChild(col1);
+        row.appendChild(col2);
+        row.appendChild(col3);
+        container.appendChild(row);
+        carouselItem.appendChild(container);
+        carouselInner.appendChild(carouselItem);
+      }
     }
-  } else {
-    // Para pantallas grandes, agrupa las tarjetas de tres en tres
-    for (var i = 0; i < cards.length; i += 3) {
-      var carouselItem = document.createElement('div');
-      carouselItem.className = 'carousel-item';
-      if (i === 0) carouselItem.className += ' active';
+  });
 
-      var container = document.createElement('div');
-      container.className = 'container';
-
-      var row = document.createElement('div');
-      row.className = 'row';
-
-      var col1 = document.createElement('div');
-      col1.className = 'col-12 col-md-4';
-      col1.appendChild(cards[i]);
-
-      var col2 = document.createElement('div');
-      col2.className = 'col-12 col-md-4';
-      if (cards[i + 1]) col2.appendChild(cards[i + 1]);
-
-      var col3 = document.createElement('div');
-      col3.className = 'col-12 col-md-4';
-      if (cards[i + 2]) col3.appendChild(cards[i + 2]);
-
-      row.appendChild(col1);
-      row.appendChild(col2);
-      row.appendChild(col3);
-      container.appendChild(row);
-      carouselItem.appendChild(container);
-      carouselInner.appendChild(carouselItem);
-    }
-  }
-}
-
-// Ejecuta la función de ajuste para cada carrusel al cargar la página y al redimensionar la ventana
-window.addEventListener('resize', function () {
-  ajustarCarrusel('#carouselServiceMaquillaje');
-  // Añade aquí los otros carruseles
+  // Finalmente, disparamos el evento 'resize' para que se ejecute la función de redimensionamiento al cargar la página.
+  window.dispatchEvent(new Event('resize'));
 });
 
-window.dispatchEvent(new Event('resize'));
 
 
-// //*
-// // Codigo para la funcionalidad del carrousel en dispositivo movil 
+//Codigo para la funcionalidad del carrousel en dispositivo movil 
 
 // window.addEventListener('resize', function () {
 //   var width = window.innerWidth;
@@ -269,3 +296,66 @@ buttons.forEach(button => {
     window.open(`https://wa.me/+573507520076?text=${encodedMessage}`);
   });
 });
+
+//*
+//* Codigo para el Modal de las Cards Vinculado al hacer click en la imagen o en el titulo del cards 
+// 
+
+// Obtener todas las imágenes de las tarjetas
+const cardImages = document.querySelectorAll('.card-img-carousel');
+
+// Añadir un evento de clic a cada imagen
+cardImages.forEach((img) => {
+  img.addEventListener('click', handleCardClick);
+});
+
+// Función para manejar el clic en la tarjeta
+function handleCardClick(event) {
+  // Obtener el ID de la tarjeta
+  const cardId = event.target.closest('.card').id;
+
+  // Obtener los datos del archivo JSON
+  axios.get('data/details-products.json')
+    .then((response) => {
+      // Filtrar los datos para obtener el objeto que coincide con el ID de la tarjeta
+      const cardData = response.data.find((data) => data.id === cardId);
+
+      // Crear el modal SweetAlert2
+      Swal.fire({
+        title: cardData.title,
+        html: createCarouselHtml(cardData.images, cardData.description),
+        showCancelButton: true,
+        confirmButtonText: 'Cotizar',
+        cancelButtonText: 'Cerrar',
+      });
+    })
+    .catch((error) => {
+      console.error('Error al obtener los datos:', error);
+    });
+}
+
+// Función para crear el HTML del carrusel
+function createCarouselHtml(images, description) {
+  let html = `<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">`;
+
+  images.forEach((image, index) => {
+    html += `<div class="carousel-item ${index === 0 ? 'active' : ''}">
+               <img src="${image}" class="d-block w-100" alt="...">
+             </div>`;
+  });
+
+  html += `</div>
+           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="visually-hidden">Anterior</span>
+           </button>
+           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="visually-hidden">Siguiente</span>
+           </button>
+           <p>${description}</p>
+         </div>`;
+
+  return html;
+}

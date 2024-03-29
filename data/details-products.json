@@ -1,0 +1,62 @@
+[
+  {
+    "id": "peinado1",
+    "title": "Trenzado + onda cirena",
+    "description": "Esta es una descripción detallada del servicio 1.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  },
+  {
+    "id": "peinado2",
+    "title": "Recogido bajo",
+    "description": "Esta es una descripción detallada del servicio 2.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  },
+  {
+    "id": "peinado3",
+    "title": "Princesa recogido",
+    "description": "Esta es una descripción detallada del servicio 3.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  },
+  {
+    "id": "peinado4",
+    "title": "Deadema invisible + ondas",
+    "description": "Esta es una descripción detallada del servicio 4.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  },
+  {
+    "id": "peinado5",
+    "title": "Coleta + ondas",
+    "description": "Esta es una descripción detallada del servicio 5.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  },
+  {
+    "id": "peinado6",
+    "title": "Recogido bucles",
+    "description": "Esta es una descripción detallada del servicio 6.",
+    "images": [
+      "img/services/peinados/1img800x800.webp",
+      "img/services/peinados/2img800x800.webp",
+      "img/services/peinados/3img800x800.webp"
+    ]
+  }
+]
