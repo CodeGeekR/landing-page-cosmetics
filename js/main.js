@@ -277,7 +277,7 @@ buttons.forEach(button => {
     const card = this.closest('.card');
 
     // Encuentra el título del servicio y el nombre del producto dentro del elemento padre
-    let serviceTitle = document.querySelector('.title-service').textContent;
+    let serviceTitle = card.closest('section').querySelector('.title-service').textContent;
     const productName = card.querySelector('h5 a').textContent;
 
     // Verifica si el título del servicio termina con 's' o 'S'
@@ -296,7 +296,6 @@ buttons.forEach(button => {
     window.open(`https://wa.me/+573507520076?text=${encodedMessage}`);
   });
 });
-
 //*
 //* Codigo para el Modal de las Cards Vinculado al hacer click en la imagen o en el titulo del cards 
 // 
