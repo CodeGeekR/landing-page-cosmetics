@@ -12,7 +12,7 @@
     </a>
 </p>
 
-Este proyecto es una landing page diseñada para presentar una variedad de productos y servicios de belleza y cuidado de la piel. La página ha sido desarrollada utilizando tecnologías como HTML, CSS, JavaScript y Bootstrap 5.3, siguiendo buenas prácticas de programación y optimización de código.
+Este proyecto es una landing page diseñada para presentar una variedad de productos y servicios de belleza, cuidado de la piel, cosmeticos, nutrición, maquillaje, accesorios. La página ha sido desarrollada utilizando tecnologías como HTML, CSS, JavaScript y Bootstrap 5.3, siguiendo buenas prácticas de programación y optimización de código.
 
 ## Estructura del proyecto
 
@@ -39,7 +39,7 @@ El proyecto tiene la siguiente estructura de archivos:
 
 ## Vista Previa
 
-- [Página web del proyecto](https://codegeekr.github.io/landing-page-cosmetics/)
+- [Página web del proyecto](https://www.kaficosmetics.co)
 
 ## Créditos
 
