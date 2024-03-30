@@ -9,7 +9,7 @@
 var carousels = Array.from(document.querySelectorAll('.carousel-inner.service'));
 
 // Luego, iteramos sobre cada carrusel con 'forEach'.
-carousels.forEach(function(carouselInner) {
+carousels.forEach(function (carouselInner) {
 
   // Agregamos un 'event listener' para el evento 'resize' del objeto 'window'.
   // Esto nos permite ejecutar código cada vez que se cambia el tamaño de la ventana.
@@ -358,3 +358,29 @@ function createCarouselHtml(images, description) {
 
   return html;
 }
+
+// Inicializa el plugin CounterUp
+// Inicializa la animación cuando el elemento #features entra en la vista
+$('#features').waypoint(function () {
+  $('.timer').each(function () {
+    var $this = $(this);
+    var countTo = $this.attr('data-count-to');
+
+    // Verifica si el texto es un número
+    if ($.isNumeric(countTo)) {
+      $({ countNum: $this.text() }).animate({
+        countNum: countTo
+      },
+        {
+          duration: 2000,
+          easing: 'linear',
+          step: function () {
+            $this.text(Math.floor(this.countNum));
+          },
+          complete: function () {
+            $this.text(this.countNum + '+');
+          }
+        });
+    }
+  });
+}, { offset: '100%', triggerOnce: false });

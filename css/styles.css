@@ -736,3 +736,28 @@ footer {
 #select-button .input:checked + .btn .span {
   color: var(--color-primary);
 } */
+
+/*************************
+*******Features CSS*******
+**************************/
+#features {
+  text-align: center;
+  background-color: var(--color-primary);
+  color: white;
+}
+
+#features i {
+  font-size: 48px;
+  color: white;
+}
+
+#features h3 {
+  margin-top: 15px;
+  font-size: 30px;
+  margin-bottom: 7px;
+  color: #fff;
+}
+
+#features .slider-overlay {
+  opacity: 0.8;
+}
