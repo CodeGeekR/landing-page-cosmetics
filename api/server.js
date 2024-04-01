@@ -1,8 +1,7 @@
 // server.js
 const express = require('express');
 const cors = require('cors');
-const formData = require('form-data');
-const Mailgun = require('mailgun.js');
+const Mailgun = require('mailgun-js');
 
 const app = express();
 
@@ -22,8 +21,7 @@ app.use(cors(corsOptions));
 app.use(express.json()); // Añade esto para analizar el cuerpo de las solicitudes JSON
 app.use(express.static(path.join(__dirname, '/')));
 
-const mailgun = new Mailgun(formData);
-const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY || '' });
+const mg = Mailgun({ apiKey: process.env.MAILGUN_API_KEY || '', domain: 'mail.colombianmacstore.com.co' });
 
 app.post('/api/send', (req, res, next) => {
     const data = {
@@ -33,9 +31,13 @@ app.post('/api/send', (req, res, next) => {
         text: `Mensaje de: ${req.body.name} (${req.body.email})\n\n${req.body.message}`
     };
 
-    mg.messages.create('mail.colombianmacstore.com.co', data)
-        .then(msg => res.json({ msg }))
-        .catch(err => next(err)); // Pasa el error al middleware de manejo de errores
+    mg.messages().send(data, function (error, body) {
+        if (error) {
+            next(error);
+        } else {
+            res.json({ msg: body });
+        }
+    });
 });
 
 // Middleware de manejo de errores
