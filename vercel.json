@@ -1,13 +1,12 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "./api/server.js",
-            "use": "@vercel/node"
+    "functions": {
+        "api/server.js": {
+            "runtime": "@vercel/node@16"
         }
-    ],
+    },
     "routes": [
         { "src": "./api/send", "methods": ["POST"], "dest": "./api/server.js" },
-        { "src": "/(.*)", "dest": "/index.html" }
+        { "src": "/(.*)", "dest": "./index.html" }
     ]
 }
