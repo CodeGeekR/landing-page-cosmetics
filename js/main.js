@@ -384,3 +384,32 @@ $('#features').waypoint(function () {
     }
   });
 }, { offset: '100%', triggerOnce: false });
+
+//*
+//* Codigo para que capturar datos del form y enviar mensaje a WhatsApp
+//*
+
+// Enviar los datos cuando el usuario oprima el botón con class sendMessage-btn
+document.querySelector('.sendMessage-btn').addEventListener('click', function (e) {
+  e.preventDefault();
+  axios.post('http://localhost:3000/send', {
+    name: document.querySelector('#name').value,
+    email: document.querySelector('#email').value,
+    subject: document.querySelector('#subject').value,
+    message: document.querySelector('#message').value
+  })
+    .then(function (response) {
+      Swal.fire(
+        '¡Enviado!',
+        'Tu mensaje ha sido enviado.',
+        'success'
+      )
+    })
+    .catch(function (error) {
+      Swal.fire(
+        'Error',
+        'Hubo un error al enviar tu mensaje.',
+        'error'
+      )
+    });
+});

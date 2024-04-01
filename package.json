@@ -1,0 +1,19 @@
+{
+  "name": "landing-page-cosmetics",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Proyecto: Landing Page para Productos y Servicios de Belleza</h1>",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "mailgun.js": "^10.2.1"
+  }
+}
