@@ -6,7 +6,7 @@
         }
     },
     "routes": [
-        { "src": "./api/send", "methods": ["POST"], "dest": "./api/server.js" },
-        { "src": "/(.*)", "dest": "./index.html" }
+        { "src": "/api/send", "methods": ["POST"], "dest": "/api/server.js" },
+        { "src": "/(.*)", "dest": "/index.html" }
     ]
 }

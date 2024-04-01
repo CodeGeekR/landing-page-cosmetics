@@ -392,7 +392,7 @@ $('#features').waypoint(function () {
 // Enviar los datos cuando el usuario oprima el botón con class sendMessage-btn
 document.querySelector('.sendMessage-btn').addEventListener('click', function (e) {
   e.preventDefault();
-  axios.post('http://localhost:3000/send', {
+  axios.post('https://www.kaficosmetics.co/api/send', {
     name: document.querySelector('#name').value,
     email: document.querySelector('#email').value,
     subject: document.querySelector('#subject').value,
