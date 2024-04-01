@@ -4,7 +4,6 @@
   "description": "<h1 align=\"center\">Proyecto: Landing Page para Productos y Servicios de Belleza</h1>",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
