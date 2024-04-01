@@ -3,13 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
-const path = require('path'); // Asegúrate de que 'path' está requerido
 
 const app = express();
 
 const corsOptions = {
     origin: function (origin, callback) {
-        const allowedOrigins = ['https://www.kaficosmetics.co']; // Quita la barra diagonal final
+        const allowedOrigins = ['https://www.kaficosmetics.co'];
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -20,15 +19,20 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json()); // Analizar el cuerpo de las solicitudes JSON
 app.use(express.static(path.join(__dirname, '/')));
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY || '' });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/', 'index.html'));
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/', 'index.html'));
+// });
+
+// mostrar un mensaje para las peticiones get
+app.get('/', (req, res) => {
+    res.send('Esta es la App de Kaficosmetics');
 });
+
 
 app.post('/send', (req, res) => {
     const data = {
