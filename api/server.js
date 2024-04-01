@@ -3,12 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
+const path = require('path'); // Asegúrate de que 'path' está requerido
 
 const app = express();
 
 const corsOptions = {
     origin: function (origin, callback) {
-        const allowedOrigins = ['https://www.kaficosmetics.co/'];
+        const allowedOrigins = ['https://www.kaficosmetics.co']; // Quita la barra diagonal final
         if (allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -19,6 +20,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(express.json()); // Analizar el cuerpo de las solicitudes JSON
 app.use(express.static(path.join(__dirname, '/')));
 
 const mailgun = new Mailgun(formData);
