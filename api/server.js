@@ -29,7 +29,7 @@ const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY ||
 // });
 
 // mostrar un mensaje para las peticiones get
-app.get('/', (req, res) => {
+app.get('/api/send', (req, res) => {
     res.send('Esta es la App de Kaficosmetics');
 });
 
