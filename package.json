@@ -4,7 +4,7 @@
   "description": "<h1 align=\"center\">Proyecto: Landing Page para Productos y Servicios de Belleza</h1>",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build step'",
     "start": "node server.js"
   },
   "keywords": [],
