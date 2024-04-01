@@ -19,13 +19,13 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.static(path.join(__dirname, '/')));
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY || '' });
 
-app.get('/', (req, res) => {
-    res.send('Bienvenido a mi aplicación!');
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/', 'index.html'));
 });
 
 app.post('/send', (req, res) => {
