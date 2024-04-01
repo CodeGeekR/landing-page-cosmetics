@@ -1,12 +1,13 @@
 {
     "version": 2,
-    "functions": {
-        "api/*.js": {
-            "runtime": "nodejs16.x"
+    "builds": [
+        {
+            "src": "./api/server.js",
+            "use": "@vercel/node"
         }
-    },
+    ],
     "routes": [
-        { "src": "/api/send", "methods": ["POST"], "dest": "/api/server.js" },
+        { "src": "./api/send", "methods": ["POST"], "dest": "./api/server.js" },
         { "src": "/(.*)", "dest": "/index.html" }
     ]
 }
