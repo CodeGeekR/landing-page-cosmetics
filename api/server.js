@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, '/')));
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY || '' });
 
-app.post('/send', (req, res, next) => {
+app.post('/api/send', (req, res, next) => {
     const data = {
         from: 'Your Name <postmaster@mail.colombianmacstore.com.co>',
         to: 'sammydn7@gmail.com',
