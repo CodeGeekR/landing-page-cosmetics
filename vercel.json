@@ -1,5 +1,10 @@
 {
     "version": 2,
+    "functions": {
+        "api/send.js": {
+            "runtime": "@vercel/node@3.0.25"
+        }
+    },
     "rewrites": [
         {
             "source": "/api/(.*)",
@@ -14,7 +19,7 @@
     "builds": [
         {
             "src": "/api/send.js",
-            "runtime": "@vercel/node@3.0.25"
+            "use": "@now/node"
         }
     ]
 }
