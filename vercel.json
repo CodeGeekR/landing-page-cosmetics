@@ -1,10 +1,5 @@
 {
     "version": 2,
-    "functions": {
-        "api/send.js": {
-            "runtime": "@vercel/node@3.0.25"
-        }
-    },
     "rewrites": [
         {
             "source": "/api/(.*)",
@@ -15,11 +10,5 @@
         { "source": "/data/(.*)", "destination": "/data/$1" },
         { "source": "/img/(.*)", "destination": "/img/$1" },
         { "source": "/(.*)", "destination": "/index.html" }
-    ],
-    "builds": [
-        {
-            "src": "/api/send.js",
-            "use": "@now/node"
-        }
     ]
 }
