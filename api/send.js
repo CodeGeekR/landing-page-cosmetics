@@ -1,6 +1,6 @@
 // send.js
 // Importamos las dependencias necesarias para nuestra aplicación
-// require('dotenv').config(); // dotenv nos permite usar variables de entorno en un archivo .env
+require('dotenv').config(); // dotenv nos permite usar variables de entorno en un archivo .env
 const express = require('express'); // express es un framework para crear servidores HTTP en Node.js
 const cors = require('cors'); // cors nos permite configurar el Cross-Origin Resource Sharing para nuestra aplicación
 const formData = require('form-data'); // form-data nos permite manejar datos de formularios multipart/form-data

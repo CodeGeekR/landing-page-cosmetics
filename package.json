@@ -1,21 +1,25 @@
 {
   "name": "landing-page-cosmetics",
   "version": "1.0.0",
-  "description": "<h1 align=\"center\">Landing Page Kafi cosmetics</h1>",
+  "description": "",
   "main": "send.js",
   "scripts": {
-    "build": "echo 'No build step'",
     "dev": "nodemon api/send.js",
-    "start": "node api/send.js"
+    "start": "node api/send.js",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "form-data": "^4.0.0",
     "mailgun.js": "^10.2.1"
-  }
+  },
+  "engines": {
+    "node": "14.x"
+    }
 }
