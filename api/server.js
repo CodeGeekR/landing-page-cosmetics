@@ -61,6 +61,11 @@ app.post('/api/send', (req, res, next) => {
         });
 });
 
+// manejar las peticiones get con un mensaje
+app.get('/', (req, res) => {
+    res.send('API!')
+})
+
 // Middleware de manejo de errores
 // Este middleware se ejecuta si cualquier otro middleware llama a next() con un error
 app.use((err, req, res, next) => {
@@ -79,3 +84,4 @@ app.listen(PORT, () => {
 
 // Exportamos la aplicación Express para que pueda ser usada en otros módulos
 module.exports = app;
+

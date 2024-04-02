@@ -6,7 +6,7 @@
         }
     },
     "rewrites": [
-        { "source": "/api/send", "destination": "/api/server.js" },
+        { "source": "/api/(.*)", "destination": "/api/server.js" },
         { "source": "/css/(.*)", "destination": "/css/$1" },
         { "source": "/js/(.*)", "destination": "/js/$1" },
         { "source": "/data/(.*)", "destination": "/data/$1" },
