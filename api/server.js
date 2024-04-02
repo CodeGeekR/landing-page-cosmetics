@@ -71,10 +71,10 @@ app.use((err, req, res, next) => {
 
 // Especificamos en que puerto nuestra aplicación Express debe escuchar
 // (Habilitar únicamente si se está ejecutando en modo de desarrollo)
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//     console.log(`Servidor Express escuchando en el puerto ${PORT}`);
-// });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor Express escuchando en el puerto ${PORT}`);
+});
 
 
 // Exportamos la aplicación Express para que pueda ser usada en otros módulos
