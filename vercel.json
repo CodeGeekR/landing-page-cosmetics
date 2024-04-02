@@ -1,7 +1,7 @@
 {
     "version": 2,
     "functions": {
-        "api/server.js": {
+        "api/send.js": {
             "runtime": "@vercel/node@3.0.25"
         }
     },

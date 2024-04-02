@@ -2,11 +2,11 @@
   "name": "landing-page-cosmetics",
   "version": "1.0.0",
   "description": "<h1 align=\"center\">Landing Page Kafi cosmetics</h1>",
-  "main": "server.js",
+  "main": "send.js",
   "scripts": {
     "build": "echo 'No build step'",
-    "dev": "nodemon api/server.js",
-    "start": "node api/server.js"
+    "dev": "nodemon api/send.js",
+    "start": "node api/send.js"
   },
   "keywords": [],
   "author": "",
