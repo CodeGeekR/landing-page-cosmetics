@@ -81,7 +81,6 @@ app.listen(PORT, () => {
     console.log(`Servidor Express escuchando en el puerto ${PORT}`);
 });
 
-
 // Exportamos la aplicación Express para que pueda ser usada en otros módulos
 module.exports = app;
 
