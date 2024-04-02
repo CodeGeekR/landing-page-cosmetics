@@ -64,10 +64,10 @@ app.post('/api/send', (req, res, next) => {
         });
 });
 
-// manejar las peticiones get con un mensaje
-app.get('/api', (req, res) => {
-    res.send('API!')
-})
+// manejar las peticiones get para que funcionen en VERCEL
+app.get('/api/send', (req, res) => {
+    res.send('¡Hola! Soy un servidor Express que envía correos electrónicos.');
+});
 
 // Middleware de manejo de errores
 // Este middleware se ejecuta si cualquier otro middleware llama a next() con un error
