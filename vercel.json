@@ -1,12 +1,7 @@
 {
     "version": 2,
-    "functions": {
-        "api/send.js": {
-            "runtime": "@vercel/node@3.0.25"
-        }
-    },
     "rewrites": [
-        { "source": "/api/(.*)", "destination": "/api/send.js" },
+        { "source": "/api/send", "destination": "api/send.js" },
         { "source": "/css/(.*)", "destination": "/css/$1" },
         { "source": "/js/(.*)", "destination": "/js/$1" },
         { "source": "/data/(.*)", "destination": "/data/$1" },

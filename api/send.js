@@ -1,11 +1,11 @@
 // send.js
 // Importamos las dependencias necesarias para nuestra aplicación
-require('dotenv').config(); // dotenv nos permite usar variables de entorno en un archivo .env
+// require('dotenv').config(); // dotenv nos permite usar variables de entorno en un archivo .env
 const express = require('express'); // express es un framework para crear servidores HTTP en Node.js
 const cors = require('cors'); // cors nos permite configurar el Cross-Origin Resource Sharing para nuestra aplicación
 const formData = require('form-data'); // form-data nos permite manejar datos de formularios multipart/form-data
 const Mailgun = require('mailgun.js'); // mailgun.js es un cliente para la API de Mailgun
-const path = require('path'); // path nos permite trabajar con rutas de archivos y directorios
+// const path = require('path'); // path nos permite trabajar con rutas de archivos y directorios
 
 // Creamos una nueva aplicación Express
 const app = express();
@@ -36,11 +36,14 @@ app.use(cors(options));
 app.use(express.json());
 
 // Servimos archivos estáticos desde el directorio raíz
-app.use(express.static(path.join(__dirname, '/')));
+// app.use(express.static(path.join(__dirname, '/')));
 
 // Creamos un nuevo cliente de Mailgun
 const mailgun = new Mailgun(formData);
-const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_API_KEY || '' });
+const mg = mailgun.client({
+    username: 'api',
+    key: process.env.MAILGUN_API_KEY,
+});
 
 // Definimos una ruta POST para enviar correos electrónicos
 app.post('/api/send', (req, res, next) => {
