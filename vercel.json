@@ -13,8 +13,8 @@
     ],
     "builds": [
         {
-        "src": "/api/send.js",
-        "use": "@now/node"
+            "src": "/api/send.js",
+            "runtime": "@vercel/node@3.0.25"
         }
     ]
 }
