@@ -399,7 +399,7 @@ document.querySelector('.sendMessage-btn').addEventListener('click', function (e
     .then(function (response) {
       Swal.fire({
         title: '¡Enviado!',
-        text: 'Tu mensaje .',
+        text: 'Tu mensaje fue enviado con éxito.',
         icon: 'success',
         iconColor: '#3ADB14',
         customClass: {
