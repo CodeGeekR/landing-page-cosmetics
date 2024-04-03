@@ -1,5 +1,3 @@
-
-
 //*
 //* Código para la funcionalidad del carrusel en dispositivo móvil 
 //* */
@@ -303,35 +301,35 @@ buttons.forEach(button => {
 // Obtener todas las imágenes de las tarjetas
 const cardImages = document.querySelectorAll('.card-img-carousel');
 
-// Añadir un evento de clic a cada imagen
-cardImages.forEach((img) => {
-  img.addEventListener('click', handleCardClick);
-});
+// // Añadir un evento de clic a cada imagen
+// cardImages.forEach((img) => {
+//   img.addEventListener('click', handleCardClick);
+// });
 
-// Función para manejar el clic en la tarjeta
-function handleCardClick(event) {
-  // Obtener el ID de la tarjeta
-  const cardId = event.target.closest('.card').id;
+// // Función para manejar el clic en la tarjeta
+// function handleCardClick(event) {
+//   // Obtener el ID de la tarjeta
+//   const cardId = event.target.closest('.card').id;
 
-  // Obtener los datos del archivo JSON
-  axios.get('data/details-products.json')
-    .then((response) => {
-      // Filtrar los datos para obtener el objeto que coincide con el ID de la tarjeta
-      const cardData = response.data.find((data) => data.id === cardId);
+//   // Obtener los datos del archivo JSON
+//   axios.get('data/details-products.json')
+//     .then((response) => {
+//       // Filtrar los datos para obtener el objeto que coincide con el ID de la tarjeta
+//       const cardData = response.data.find((data) => data.id === cardId);
 
-      // Crear el modal SweetAlert2
-      Swal.fire({
-        title: cardData.title,
-        html: createCarouselHtml(cardData.images, cardData.description),
-        showCancelButton: true,
-        confirmButtonText: 'Cotizar',
-        cancelButtonText: 'Cerrar',
-      });
-    })
-    .catch((error) => {
-      console.error('Error al obtener los datos:', error);
-    });
-}
+//       // Crear el modal SweetAlert2
+//       Swal.fire({
+//         title: cardData.title,
+//         html: createCarouselHtml(cardData.images, cardData.description),
+//         showCancelButton: true,
+//         confirmButtonText: 'Cotizar',
+//         cancelButtonText: 'Cerrar',
+//       });
+//     })
+//     .catch((error) => {
+//       console.error('Error al obtener los datos:', error);
+//     });
+// }
 
 // Función para crear el HTML del carrusel
 function createCarouselHtml(images, description) {
@@ -399,17 +397,39 @@ document.querySelector('.sendMessage-btn').addEventListener('click', function (e
     message: document.querySelector('#message').value
   })
     .then(function (response) {
-      Swal.fire(
-        '¡Enviado!',
-        'Tu mensaje ha sido enviado.',
-        'success'
-      )
+      Swal.fire({
+        title: '¡Enviado!',
+        text: 'Tu mensaje .',
+        icon: 'success',
+        iconColor: '#3ADB14',
+        customClass: {
+          confirmButton: 'btn-alert-contact'
+        }
+      })
     })
     .catch(function (error) {
-      Swal.fire(
-        'Error',
-        'Hubo un error al enviar tu mensaje.',
-        'error'
-      )
+      Swal.fire({
+        title: 'Error',
+        text: 'Hubo un error al enviar tu mensaje.',
+        icon: 'error',
+        customClass: {
+          confirmButton: 'btn-alert-contact'
+        }
+      })
     });
 });
+
+//<!-- Funcion que activa una nueva pestaña para Icono WhatsApp (Animado) -->
+function addChatWp() {
+  var botonWhatsApp = document.querySelector(".boton-whatsapp");
+
+  botonWhatsApp.addEventListener("click", function (event) {
+    event.preventDefault();
+    // Agrega tu mensaje personalizado aquí
+    var mensaje = "Hola, estoy interesad@ en sus productos y servicios de belleza. Me podriaría brindar más información sobre: ";
+    // Codifica el mensaje para usarlo en una URL
+    var mensajeCodificado = encodeURIComponent(mensaje);
+    window.open("https://wa.me/+573507520076?text=" + mensajeCodificado, "_blank");
+  });
+}
+window.addEventListener("load", addChatWp);

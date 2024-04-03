@@ -5,6 +5,8 @@ const express = require('express'); // express es un framework para crear servid
 const cors = require('cors'); // cors nos permite configurar el Cross-Origin Resource Sharing para nuestra aplicación
 const formData = require('form-data'); // form-data nos permite manejar datos de formularios multipart/form-data
 const Mailgun = require('mailgun.js'); // mailgun.js es un cliente para la API de Mailgun
+const expressSanitizer = require('express-sanitizer'); // express-sanitizer nos permite sanitizar los datos de las solicitudes HTTP
+const rateLimit = require('express-rate-limit'); // express-rate-limit nos permite limitar el número de solicitudes que se pueden realizar a una aplicación
 // const path = require('path'); // path nos permite trabajar con rutas de archivos y directorios
 
 // Creamos una nueva aplicación Express
@@ -26,7 +28,7 @@ const options = {
         }
     },
     // Métodos HTTP permitidos
-    methods: "GET,POST"
+    methods: "POST"
 };
 
 // Aplicamos las opciones de CORS a nuestra aplicación Express
@@ -34,6 +36,9 @@ app.use(cors(options));
 
 // Usamos el middleware express.json() para analizar el cuerpo de las solicitudes JSON
 app.use(express.json());
+
+// Usamos express-sanitizer como middleware después de express.json()
+app.use(expressSanitizer());
 
 // Servimos archivos estáticos desde el directorio raíz
 // app.use(express.static(path.join(__dirname, '/')));
@@ -45,14 +50,21 @@ const mg = mailgun.client({
     key: process.env.MAILGUN_API_KEY,
 });
 
+// Aplica una limitación de tasa de 100 solicitudes por hora a todas las rutas
+const limiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hora
+    max: 20 // limita cada IP a 20 solicitudes por ventana
+});
+app.use(limiter);
+
 // Definimos una ruta POST para enviar correos electrónicos
 app.post('/api/send', (req, res, next) => {
     // Los datos del correo electrónico se toman del cuerpo de la solicitud
     const data = {
         from: process.env.MAILGUN_FROM,
         to: process.env.MAILGUN_TO,
-        subject: req.body.subject,
-        text: `Mensaje de: ${req.body.name} (${req.body.email})\n\n${req.body.message}`
+        subject: req.sanitize(req.body.subject),
+        text: `Mensaje de: ${req.sanitize(req.body.name)} (${req.sanitize(req.body.email)})\n\n${req.sanitize(req.body.message)}`
     };
 
     // Intentamos enviar el correo electrónico
@@ -64,17 +76,17 @@ app.post('/api/send', (req, res, next) => {
         });
 });
 
-// manejar las peticiones get para que funcionen en VERCEL
-app.get('/api/send', (req, res) => {
-    res.send('¡Hola! Soy un servidor Express que envía correos electrónicos.');
-});
+// manejar las peticiones get
+// app.get('/api/send', (req, res) => {
+//     res.send('¡Hola! Soy un servidor Express que envía correos electrónicos.');
+// });
 
 // Middleware de manejo de errores
 // Este middleware se ejecuta si cualquier otro middleware llama a next() con un error
 app.use((err, req, res, next) => {
     console.error(err.stack); // Registramos el stack trace del error
-    // Respondemos con un estado 500 y el mensaje del error
-    res.status(500).send(`¡Algo se rompió! Error: ${err.message}`);
+    // Respondemos con un estado 500 y un mensaje de error genérico
+    res.status(500).send('¡Algo se rompió!');
 });
 
 // Especificamos en que puerto nuestra aplicación Express debe escuchar
