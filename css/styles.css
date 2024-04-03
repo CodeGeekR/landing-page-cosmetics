@@ -626,10 +626,10 @@ section {
   transition: all 0.2s;
 }
 
-.form-card2:hover {
+/* .form-card2:hover {
   transform: scale(0.98);
   border-radius: 20px;
-}
+} */
 
 
 /* Estilos del pie de página */

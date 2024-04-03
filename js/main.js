@@ -359,7 +359,8 @@ function createCarouselHtml(images, description) {
 
 // Inicializa el plugin CounterUp
 // Inicializa la animación cuando el elemento #features entra en la vista
-$('#features').waypoint(function () {
+// Mueve la lógica de conteo a una función separada
+function iniciarConteo() {
   $('.timer').each(function () {
     var $this = $(this);
     var countTo = $this.attr('data-count-to');
@@ -381,7 +382,20 @@ $('#features').waypoint(function () {
         });
     }
   });
+}
+
+// Inicia el conteo cuando la página se carga
+$(document).ready(iniciarConteo);
+
+// Inicia el conteo cuando el usuario llega a la sección #features
+$('#features').waypoint(function () {
+  iniciarConteo();
 }, { offset: '100%', triggerOnce: false });
+
+// Recalcula la posición del waypoint cuando la página se recarga
+$(window).on('load', function () {
+  Waypoint.refreshAll();
+});
 
 //*
 //* Codigo para que capturar datos del form y enviar mensaje a WhatsApp
