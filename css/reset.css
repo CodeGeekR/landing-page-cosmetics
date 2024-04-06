@@ -2,6 +2,8 @@
     box-sizing: border-box;
     position: relative;
     min-width: 0;
+    /* Herramienta de depuración para maquetar web */
+    /* border: 1px solid red; */
 }
 
 body {
