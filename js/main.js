@@ -291,7 +291,7 @@ buttons.forEach(button => {
     const encodedMessage = encodeURIComponent(message);
 
     // Abre WhatsApp con el mensaje personalizado
-    window.open(`https://wa.me/+573507520076?text=${encodedMessage}`);
+    window.open(`https://wa.me/+573000000000?text=${encodedMessage}`);
   });
 });
 //*
@@ -299,37 +299,37 @@ buttons.forEach(button => {
 // 
 
 // Obtener todas las imágenes de las tarjetas
-const cardImages = document.querySelectorAll('.card-img-carousel');
+const cardImages = document.querySelectorAll('.card-img-carousel, .card-title');
 
-// // Añadir un evento de clic a cada imagen
-// cardImages.forEach((img) => {
-//   img.addEventListener('click', handleCardClick);
-// });
+// Añadir un evento de clic a cada imagen
+cardImages.forEach((img) => {
+  img.addEventListener('click', handleCardClick);
+});
 
-// // Función para manejar el clic en la tarjeta
-// function handleCardClick(event) {
-//   // Obtener el ID de la tarjeta
-//   const cardId = event.target.closest('.card').id;
+// Función para manejar el clic en la tarjeta
+function handleCardClick(event) {
+  // Obtener el ID de la tarjeta
+  const cardId = event.target.closest('.card').id;
 
-//   // Obtener los datos del archivo JSON
-//   axios.get('data/details-products.json')
-//     .then((response) => {
-//       // Filtrar los datos para obtener el objeto que coincide con el ID de la tarjeta
-//       const cardData = response.data.find((data) => data.id === cardId);
+  // Obtener los datos del archivo JSON
+  axios.get('data/details-products.json')
+    .then((response) => {
+      // Filtrar los datos para obtener el objeto que coincide con el ID de la tarjeta
+      const cardData = response.data.find((data) => data.id === cardId);
 
-//       // Crear el modal SweetAlert2
-//       Swal.fire({
-//         title: cardData.title,
-//         html: createCarouselHtml(cardData.images, cardData.description),
-//         showCancelButton: true,
-//         confirmButtonText: 'Cotizar',
-//         cancelButtonText: 'Cerrar',
-//       });
-//     })
-//     .catch((error) => {
-//       console.error('Error al obtener los datos:', error);
-//     });
-// }
+      // Crear el modal SweetAlert2
+      Swal.fire({
+        title: cardData.title,
+        html: createCarouselHtml(cardData.images, cardData.description),
+        showCancelButton: true,
+        confirmButtonText: 'Cotizar',
+        cancelButtonText: 'Cerrar',
+      });
+    })
+    .catch((error) => {
+      console.error('Error al obtener los datos:', error);
+    });
+}
 
 // Función para crear el HTML del carrusel
 function createCarouselHtml(images, description) {
@@ -443,7 +443,7 @@ function addChatWp() {
     var mensaje = "Hola, estoy interesad@ en sus productos y servicios de belleza. Me podriaría brindar más información sobre: ";
     // Codifica el mensaje para usarlo en una URL
     var mensajeCodificado = encodeURIComponent(mensaje);
-    window.open("https://wa.me/+573507520076?text=" + mensajeCodificado, "_blank");
+    window.open("https://wa.me/+573000000000?text=" + mensajeCodificado, "_blank");
   });
 }
 window.addEventListener("load", addChatWp);
